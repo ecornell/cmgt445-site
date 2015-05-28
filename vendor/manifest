@@ -1,0 +1,33 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/go-martini/martini",
+			"repository": "https://github.com/go-martini/martini",
+			"revision": "49ae4867d3dde47748dba4a25f3f9011e1e093ae",
+			"branch": "master",
+			"path": ""
+		},
+		{
+			"importpath": "github.com/codegangsta/inject",
+			"repository": "https://github.com/codegangsta/inject",
+			"revision": "33e0aa1cb7c019ccc3fbe049a8262a6403d30504",
+			"branch": "master",
+			"path": ""
+		},
+		{
+			"importpath": "github.com/martini-contrib/render",
+			"repository": "https://github.com/martini-contrib/render",
+			"revision": "b65063311fac6cbf84d3538f5715f7847e648322",
+			"branch": "master",
+			"path": ""
+		},
+		{
+			"importpath": "github.com/oxtoacart/bpool",
+			"repository": "https://github.com/oxtoacart/bpool",
+			"revision": "754d38fccfc6e52083355014b6abc8d626445dfd",
+			"branch": "master",
+			"path": ""
+		}
+	]
+}
