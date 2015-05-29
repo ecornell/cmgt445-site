@@ -8,3 +8,7 @@ body {
   background-color: transparent;
   border-left: 2px solid #563d7c;
 }
+
+.navbar-brand img {
+  margin-top: -10px;
+}
