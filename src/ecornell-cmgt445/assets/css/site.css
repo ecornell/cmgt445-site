@@ -5,10 +5,17 @@ body {
   padding: 6px 15px;
 }
 #navbar-side li.active>a {
-  color: #563d7c;
+  color: #563d2c;
   background-color: transparent;
-  border-left: 2px solid #563d7c;
+  border-left: 2px solid #563d2c;
 }
 .navbar-brand img {
   margin-top: -10px;
+}
+h2 {
+  border-bottom: 1px solid #c6cdcc;
+  margin-top: 25px;
+}
+h4 {
+  margin-top: 25px;
 }
