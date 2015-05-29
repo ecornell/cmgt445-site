@@ -40,13 +40,38 @@ func main() {
 	m := InitServer()
 
 	m.Get("/", func(r render.Render) {
-
 		vars := map[string]string{
 			"title": "Home",
 		}
-
 		r.HTML(200, "home", vars)
+	})
 
+	m.Get("/plan", func(r render.Render) {
+		vars := map[string]string{
+			"title": "Implementation Plan",
+		}
+		r.HTML(200, "plan", vars)
+	})
+
+	m.Get("/glossary", func(r render.Render) {
+		vars := map[string]string{
+			"title": "Glossary",
+		}
+		r.HTML(200, "glossary", vars)
+	})
+
+	m.Get("/references", func(r render.Render) {
+		vars := map[string]string{
+			"title": "References",
+		}
+		r.HTML(200, "references", vars)
+	})
+
+	m.Get("/about", func(r render.Render) {
+		vars := map[string]string{
+			"title": "About",
+		}
+		r.HTML(200, "about", vars)
 	})
 
 	m.Run()

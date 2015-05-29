@@ -7,13 +7,37 @@
 
     <title>{{.title}}</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
 
   </head>
   <body>
 
+    <nav id="nav-main" class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Riordan HR System Project</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li id="nav-plan"><a href="/plan">Implementation Plan</a></li>
+            <li id="nav-glossary"><a href="/glossary">Glossary</a></li>
+            <li id="nav-ref"><a href="/references">References</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id="nav-about"><a href="/about">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     {{ yield}}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
