@@ -28,6 +28,20 @@
 			"revision": "754d38fccfc6e52083355014b6abc8d626445dfd",
 			"branch": "master",
 			"path": ""
+		},
+		{
+			"importpath": "github.com/russross/blackfriday",
+			"repository": "https://github.com/russross/blackfriday",
+			"revision": "93ae1e873a88e44ac18bb7d9d9bd69ef77802471",
+			"branch": "master",
+			"path": ""
+		},
+		{
+			"importpath": "github.com/shurcooL/sanitized_anchor_name",
+			"repository": "https://github.com/shurcooL/sanitized_anchor_name",
+			"revision": "11a20b799bf22a02808c862eb6ca09f7fb38f84a",
+			"branch": "master",
+			"path": ""
 		}
 	]
 }
