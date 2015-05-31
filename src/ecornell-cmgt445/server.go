@@ -35,6 +35,8 @@ func main() {
 	fmt.Println(" Elijah Cornell - 2015-06-01")
 	fmt.Println("")
 	fmt.Println(" Site URL:  http://localhost:3000")
+	fmt.Println("")
+	fmt.Println(" Ctrl-C to Exit")
 	fmt.Println("----------------------------------------------")
 
 	m := InitServer()
