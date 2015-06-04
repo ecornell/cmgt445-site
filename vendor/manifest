@@ -42,6 +42,13 @@
 			"revision": "11a20b799bf22a02808c862eb6ca09f7fb38f84a",
 			"branch": "master",
 			"path": ""
+		},
+		{
+			"importpath": "github.com/martini-contrib/binding",
+			"repository": "https://github.com/martini-contrib/binding",
+			"revision": "8aaceec3b52c275477f32c95ea5c6e8ccaba04c5",
+			"branch": "master",
+			"path": ""
 		}
 	]
 }
