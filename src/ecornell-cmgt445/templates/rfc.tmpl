@@ -4,44 +4,92 @@
 
 		{{if .note}}
 		<div class="alert alert-success" role="alert">{{.note}}</div>
-		{{end}} {{if .error}}
-		<div class="alert alert-danger" role="alert">{{.error}}</div>
+		{{end}} {{if .errors}}
+			<div class="alert alert-danger" role="alert">
+			{{range .errors}}
+				{{.}}<br/>
+			{{end}}
+		</div>
 		{{end}}
 
 		<h2>Standard Change Request</h2>
 
-		<form id="form" method="post" action="/bug">
+		<form id="form" method="post" action="/rfc">
 
 			<div class="form-group">
 				<label for="inputDesc">Change Requestor *</label>
-				<input class="form-control" id="inputRequestor" name="requestor" placeholder="Required">
+				<input class="form-control" id="inputRequestor" name="requestor" placeholder="Required" value="{{.data.Requestor}}">
 			</div>
 
 			<div class="form-group">
 				<label for="inputDesc">Change Category (Check all that apply) *</label> <br />
 				<label class="checkbox-inline">
-					<input type="checkbox" id="inlineCatSchedule" value="cat-schedule"> Schedule
+					<input type="checkbox" id="inlineCatCA" value="cat-ca"> Corrective Action
 				</label>
 				<label class="checkbox-inline">
-					<input type="checkbox" id="inlineCatCost" value="cat-cost"> Cost
+					<input type="checkbox" id="inlineCatPA" value="cat-pa"> Preventative Action
 				</label>
 				<label class="checkbox-inline">
-					<input type="checkbox" id="inlineCatScope" value="cat-scope"> Scope
+					<input type="checkbox" id="inlineCatDR" value="cat-dr"> Defect Repair
 				</label>
 				<label class="checkbox-inline">
-					<input type="checkbox" id="inlineCatReq" value="cat-req"> Requirements/Deliverables
+					<input type="checkbox" id="inlineCatU" value="cat-u"> Update
 				</label>
 				<label class="checkbox-inline">
-					<input type="checkbox" id="inlineCatTest" value="cat-test"> Testing/Quality
-				</label>
-				<label class="checkbox-inline">
-					<input type="checkbox" id="inlineCatResource" value="cat-resource"> Resources
+					<input type="checkbox" id="inlineCatO" value="cat-o"> Other
 				</label>
 			</div>
 
 			<div class="form-group">
-				<label for="inputSteps">Steps to reproduce:</label>
-				<textarea id="inputSteps" class="form-control" rows="8" name="steps"></textarea>
+				<label for="inputDesc">Does the Change Affect (Check all that apply) *</label> <br />
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineAffectSchedule" value="affect-schedule"> Schedule
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineAffectCost" value="affect-cost"> Cost
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineAffectScope" value="affect-scope"> Scope
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineAffectReq" value="affect-req"> Requirements/Deliverables
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineAffectTest" value="affect-test"> Testing/Quality
+				</label>
+				<label class="checkbox-inline">
+					<input type="checkbox" id="inlineAffectResource" value="affect-resource"> Resources
+				</label>
+			</div>
+
+			<div class="form-group">
+				<label for="inputDetail">Describe the Change Being Requested: *</label>
+				<textarea id="inputDetail" class="form-control" rows="3" name="detail" placeholder="Required">{{.data.Details}}</textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="inputReason">Describe the Reason for this Change: *</label>
+				<textarea id="inputReason" class="form-control" rows="3" name="reason" placeholder="Required">{{.data.Reason}}</textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="inputAlt">Describe all Alternatives Considered:</label>
+				<textarea id="inputAlt" class="form-control" rows="2" name="alternatives">{{.data.Alternatives}}</textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="inputRisks">Describe Risks to be Considered for this Change:</label>
+				<textarea id="inputRisks" class="form-control" rows="2" name="risks">{{.data.Risks}}</textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="inputCosts">Estimate Resources and Costs Needed to Implement this Change:</label>
+				<textarea id="inputCosts" class="form-control" rows="2" name="costs">{{.data.Costs}}</textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="inputQuality">Describe the Implications to Quality:</label>
+				<textarea id="inputQuality" class="form-control" rows="2" name="quality">{{.data.Quality}}</textarea>
 			</div>
 
 			<button type="submit" class="btn btn-default">Submit</button>
@@ -57,6 +105,6 @@
 <script>
 	$(document).ready(function() {
 		$('#nav-forms').addClass('active');
-		$('#inputTitle').focus();
+		$('#inputRequestor').focus();
 	});
 </script>

@@ -93,18 +93,16 @@ func main() {
 
 	m.Post("/bug", binding.Bind(BugForm{}), func(bug BugForm, r render.Render) {
 
-		vars := map[string]string{
+		vars := map[string]interface{}{
 			"title": "Submit Bug",
 		}
 
+		errors := []string{}
 		if len(bug.Description) == 0 {
-			vars["error"] = "Short Desciption Is Required"
-
-			fmt.Println("----------------------------------------------")
-			fmt.Println(" Bug Report - Error")
+			errors = append(errors, "Short Desciption Is Required")
 		}
 
-		if vars["error"] == "" {
+		if len(errors) == 0 {
 			vars["note"] = "Bug Report Submitted Successfully"
 
 			fmt.Println("----------------------------------------------")
@@ -113,6 +111,12 @@ func main() {
 			fmt.Println("   Severity: " + bug.Severity)
 			fmt.Println("   Steps: " + bug.Steps)
 
+		} else {
+			vars["data"] = bug
+			vars["errors"] = errors
+
+			fmt.Println("----------------------------------------------")
+			fmt.Println(" Bug Report - Error")
 		}
 
 		r.HTML(200, "bug", vars)
@@ -126,10 +130,20 @@ func main() {
 	})
 
 	type RfcForm struct {
-		Title     string `form:"desc"`
 		Requestor string `form:"requestor"`
-		Category  string `form:"category"`
-		Affect    string `form:"affect"`
+
+		CategoryCA string `form:"cat-ca"`
+		CategoryPA string `form:"cat-pa"`
+		CategoryDR string `form:"cat-dr"`
+		CategoryU  string `form:"cat-u"`
+		CategoryO  string `form:"cat-o"`
+
+		AffectSchedule string `form:"affect-schedule"`
+		AffectCost     string `form:"affect-cost"`
+		AffectScope    string `form:"affect-scope"`
+		AffectReq      string `form:"affect-req"`
+		AffectTest     string `form:"affect-test"`
+		AffectResource string `form:"affect-resource"`
 
 		Details      string `form:"detail"`
 		Reason       string `form:"reason"`
@@ -139,26 +153,36 @@ func main() {
 		Quality      string `form:"quality"`
 	}
 
-	m.Post("/rfs", binding.Bind(RfcForm{}), func(rfc RfcForm, r render.Render) {
+	m.Post("/rfc", binding.Bind(RfcForm{}), func(rfc RfcForm, r render.Render) {
 
-		vars := map[string]string{
+		vars := map[string]interface{}{
 			"title": "Request for Change",
+			"data":  rfc,
 		}
 
-		if len(rfc.Title) == 0 {
-			vars["error"] = "Title Is Required"
-
-			fmt.Println("----------------------------------------------")
-			fmt.Println(" Bug Report - Error")
+		errors := []string{}
+		if len(rfc.Requestor) == 0 {
+			errors = append(errors, "Requestor Is Required")
+		}
+		if len(rfc.Details) == 0 {
+			errors = append(errors, "Description of Change Is Required")
+		}
+		if len(rfc.Reason) == 0 {
+			errors = append(errors, "Reason for Change Is Required")
 		}
 
-		if vars["error"] == "" {
+		if len(errors) == 0 {
 			vars["note"] = "RFC Submitted Successfully"
 
 			fmt.Println("----------------------------------------------")
-			fmt.Println(" Bug Report - Success")
-			fmt.Println("   Title: " + rfc.Title)
+			fmt.Println(" RFC - Success")
+			fmt.Println("   Requestor: " + rfc.Requestor)
 
+		} else {
+			vars["data"] = rfc
+			vars["errors"] = errors
+			fmt.Println("----------------------------------------------")
+			fmt.Println(" RFC - Error")
 		}
 
 		r.HTML(200, "rfc", vars)

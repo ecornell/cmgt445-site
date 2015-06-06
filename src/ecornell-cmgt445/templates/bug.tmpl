@@ -2,13 +2,15 @@
 
 	<div class="row">
 
-    {{if .note}}
-      <div class="alert alert-success" role="alert">{{.note}}</div>
-    {{end}}
-
-    {{if .error}}
-      <div class="alert alert-danger" role="alert">{{.error}}</div>
-    {{end}}
+		{{if .note}}
+		<div class="alert alert-success" role="alert">{{.note}}</div>
+		{{end}} {{if .errors}}
+			<div class="alert alert-danger" role="alert">
+			{{range .errors}}
+				{{.}}<br/>
+			{{end}}
+		</div>
+		{{end}}
 
 		<h2>Submit Bug Report</h2>
 
@@ -16,12 +18,12 @@
 
       <div class="form-group">
 				<label for="inputDesc">Short Description *</label>
-				<input class="form-control" id="inputDesc" name="desc" placeholder="Required">
+				<input class="form-control" id="inputDesc" name="desc" placeholder="Required" value="{{.data.Description}}">
 			</div>
 
 			<div class="form-group">
 				<label for="inputSeverity">Severity</label>
-				<select id="inputSeverity" class="form-control" name="severity">
+				<select id="inputSeverity" class="form-control" name="severity" value="{{.data.Severity}}">
 					<option>1 - Critical</option>
 					<option>2 - High</option>
 					<option>3 - Medium</option>
@@ -31,7 +33,7 @@
 
 			<div class="form-group">
 				<label for="inputSteps">Steps to reproduce:</label>
-				<textarea id="inputSteps" class="form-control" rows="8" name="steps"></textarea>
+				<textarea id="inputSteps" class="form-control" rows="8" name="steps">{{.data.Steps}}</textarea>
 			</div>
 
 			<button type="submit" class="btn btn-default">Submit</button>
@@ -47,6 +49,6 @@
 <script>
 	$(document).ready(function() {
 		$('#nav-forms').addClass('active');
-    $('#inputTitle').focus();
+    $('#inputDesc').focus();
 	});
 </script>
