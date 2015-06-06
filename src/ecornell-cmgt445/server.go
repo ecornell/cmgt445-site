@@ -175,7 +175,14 @@ func main() {
 
 			fmt.Println("----------------------------------------------")
 			fmt.Println(" RFC - Success")
-			fmt.Println("   Requestor: " + rfc.Requestor)
+			fmt.Println("   Requestor   : " + rfc.Requestor)
+			fmt.Println("   Details     : " + rfc.Details)
+			fmt.Println("   Details     : " + rfc.Details)
+			fmt.Println("   Reason      : " + rfc.Reason)
+			fmt.Println("   Alternatives: " + rfc.Alternatives)
+			fmt.Println("   Risks       : " + rfc.Risks)
+			fmt.Println("   Costs       : " + rfc.Costs)
+			fmt.Println("   Quality     : " + rfc.Quality)
 
 		} else {
 			vars["data"] = rfc
