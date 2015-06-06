@@ -157,7 +157,6 @@ func main() {
 
 		vars := map[string]interface{}{
 			"title": "Request for Change",
-			"data":  rfc,
 		}
 
 		errors := []string{}
